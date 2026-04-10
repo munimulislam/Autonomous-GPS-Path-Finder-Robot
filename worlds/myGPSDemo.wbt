@@ -1,0 +1,394 @@
+#VRML_SIM R2025b utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/floors/protos/Floor.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/factory/containers/protos/WoodenBox.proto"
+
+WorldInfo {
+  basicTimeStep 16
+  contactProperties [
+    ContactProperties {
+      material2 "dumbbell"
+    }
+  ]
+}
+Viewpoint {
+  orientation -0.4647094479553743 0.45951065504486327 0.7568983332530544 1.8566005666963084
+  position 0.07459249864156589 -2.517835735151123 4.766038234231826
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+Floor {
+  size 3 3
+}
+DEF WALL_1 Solid {
+  translation 1.49 0 0.05
+  children [
+    DEF WALL_SHAPE Shape {
+      appearance PBRAppearance {
+        baseColor 0.12549 0.368627 0.729412
+        roughness 1
+        metalness 0
+      }
+      geometry Box {
+        size 0.02 3 0.1
+      }
+    }
+  ]
+  name "wall 1"
+  boundingObject USE WALL_SHAPE
+}
+DEF WALL_2 Solid {
+  translation -1.5 0 0.05
+  children [
+    USE WALL_SHAPE
+  ]
+  name "wall 2"
+  boundingObject USE WALL_SHAPE
+}
+DEF WALL_3 Solid {
+  translation 3.67327e-06 -1.5 0.05
+  rotation 0 0 1 1.5708
+  children [
+    USE WALL_SHAPE
+  ]
+  name "wall 3"
+  boundingObject USE WALL_SHAPE
+}
+DEF WALL_4 Solid {
+  translation -3.63643e-06 1.49 0.05
+  rotation 0 0 1 1.5708
+  children [
+    USE WALL_SHAPE
+  ]
+  name "wall 4"
+  boundingObject USE WALL_SHAPE
+}
+Robot {
+  translation 0 0 0.04
+  children [
+    DEF BODY Shape {
+      appearance PBRAppearance {
+        baseColor 0.917647 0.145098 0.145098
+        roughness 1
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.1 0.05
+      }
+    }
+    DEF WHEEL1 HingeJoint {
+      jointParameters HingeJointParameters {
+        axis 0 1 0
+        anchor 0.05 0.06 0
+      }
+      device [
+        RotationalMotor {
+          name "wheel1"
+        }
+      ]
+      endPoint Solid {
+        translation 0.05 0.06 0
+        rotation 1 -8.341100867484488e-17 -3.876158638419262e-16 1.570799999999999
+        children [
+          DEF WHEEL Shape {
+            appearance PBRAppearance {
+              baseColor 0.305882 0.898039 0.25098
+              baseColorMap ImageTexture {
+                url [
+                  "../../../Downloads/red_brick_wall.jpg"
+                ]
+              }
+              roughness 1
+              metalness 0
+            }
+            geometry Cylinder {
+              height 0.02
+              radius 0.04
+              subdivision 24
+            }
+          }
+        ]
+        boundingObject USE WHEEL
+        physics Physics {
+        }
+      }
+    }
+    DEF WHEEL2 HingeJoint {
+      jointParameters HingeJointParameters {
+        axis 0 1 0
+        anchor 0.05 -0.06 0
+      }
+      device [
+        RotationalMotor {
+          name "wheel2"
+        }
+      ]
+      endPoint Solid {
+        translation 0.05 -0.06 0
+        rotation 1 -5.54437881191616e-16 2.747656756347831e-16 1.5707999999999998
+        children [
+          USE WHEEL
+        ]
+        name "solid(1)"
+        boundingObject USE WHEEL
+        physics Physics {
+        }
+      }
+    }
+    DEF WHEEL3 HingeJoint {
+      jointParameters HingeJointParameters {
+        axis 0 1 0
+        anchor -0.05 0.06 0
+      }
+      device [
+        RotationalMotor {
+          name "wheel3"
+        }
+      ]
+      endPoint Solid {
+        translation -0.05 0.06 0
+        rotation 1 -4.9065299220497e-18 7.85044787527952e-17 1.5707999999999995
+        children [
+          USE WHEEL
+        ]
+        name "solid(2)"
+        boundingObject USE WHEEL
+        physics Physics {
+        }
+      }
+    }
+    DEF WHEEL4 HingeJoint {
+      jointParameters HingeJointParameters {
+        axis 0 1 0
+        anchor -0.05 -0.06 0
+      }
+      device [
+        RotationalMotor {
+          name "wheel4"
+        }
+      ]
+      endPoint Solid {
+        translation -0.05 -0.06 0
+        rotation 1 -3.0420485516708134e-16 9.813059844099398e-18 1.5707999999999998
+        children [
+          USE WHEEL
+        ]
+        name "solid(3)"
+        boundingObject USE WHEEL
+        physics Physics {
+        }
+      }
+    }
+    DEF DS_RIGHT DistanceSensor {
+      translation 0.1 -0.03 0
+      rotation 0 0 1 -0.3
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.184314 0.596078 0.847059
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 0.01 0.01 0.01
+          }
+        }
+      ]
+      name "ds_right"
+      lookupTable [
+        0 0 0
+        0.3 1000 0
+      ]
+    }
+    DEF DS_LEFT DistanceSensor {
+      translation 0.1 0.03 0
+      rotation 0 0 1 0.3
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.184314 0.596078 0.847059
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 0.01 0.01 0.01
+          }
+        }
+      ]
+      name "ds_left"
+      lookupTable [
+        0 0 0
+        0.3 1000 0
+      ]
+    }
+    DEF LS_RIGHT LightSensor {
+      translation 0.1 -0.04 0.02
+      children [
+        Shape {
+          appearance PBRAppearance {
+            roughness 1
+          }
+          geometry Box {
+            size 0.01 0.01 0.01
+          }
+        }
+      ]
+      name "ls_right"
+    }
+    DEF LS_LEFT LightSensor {
+      translation 0.1 0.04 0.02
+      children [
+        Shape {
+          appearance PBRAppearance {
+            roughness 1
+          }
+          geometry Box {
+            size 0.01 0.01 0.01
+          }
+        }
+      ]
+      name "ls_left"
+    }
+    GPS {
+    }
+  ]
+  boundingObject USE BODY
+  physics Physics {
+    density -1
+    mass 1
+  }
+  controller "intelligent_gps_controller"
+  supervisor TRUE
+}
+Shape {
+  appearance PBRAppearance {
+    baseColor 0 1 0
+    roughness 1
+    metalness 0
+  }
+  geometry Box {
+    size 0.05 0.05 0.05
+  }
+}
+DEF redNode Solid {
+  translation 0.47 0.44 0
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 1 0 0
+        roughness 1
+        metalness 0
+      }
+      geometry DEF target Cylinder {
+        height 0.01
+        radius 0.05
+      }
+    }
+  ]
+}
+DEF greenNode Solid {
+  translation 0.49 -0.13 0
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 1 0
+        roughness 1
+        metalness 0
+      }
+      geometry USE target
+    }
+  ]
+  name "solid(1)"
+}
+DEF blueNode Solid {
+  translation -0.29 0.25 0
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 1
+        roughness 1
+        metalness 0
+      }
+      geometry USE target
+    }
+  ]
+  name "solid(2)"
+}
+DEF whiteNode Solid {
+  translation 1.01 -0.14 0
+  children [
+    Shape {
+      appearance PBRAppearance {
+        roughness 1
+        metalness 0
+      }
+      geometry USE target
+    }
+  ]
+  name "solid(3)"
+}
+DEF orangeNode Solid {
+  translation -0.7 -0.5 0
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 1 0.5 0
+        roughness 1
+        metalness 0
+      }
+      geometry USE target
+    }
+  ]
+  name "solid(4)"
+}
+DEF purpleNode Solid {
+  translation -0.8 0.6 0
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.5 0 0.8
+        roughness 1
+        metalness 0
+      }
+      geometry USE target
+    }
+  ]
+  name "solid(5)"
+}
+DEF yellowNode Solid {
+  translation 0.2 -0.8 0
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 1 1 0
+        roughness 1
+        metalness 0
+      }
+      geometry USE target
+    }
+  ]
+  name "solid(6)"
+}
+WoodenBox {
+  translation 0.77 0.09 0.05
+  size 0.1 0.1 0.1
+}
+WoodenBox {
+  translation 0.14 0.34 0.05
+  name "wooden box(1)"
+  size 0.1 0.1 0.1
+}
+WoodenBox {
+  translation -0.54 -0.07 0.05
+  name "wooden box(2)"
+  size 0.1 0.1 0.1
+}
+WoodenBox {
+  translation -0.04 -0.35 0.05
+  name "wooden box(3)"
+  size 0.1 0.1 0.1
+}
