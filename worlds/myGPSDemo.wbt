@@ -15,7 +15,7 @@ WorldInfo {
 }
 Viewpoint {
   orientation -0.4647094479553743 0.45951065504486327 0.7568983332530544 1.8566005666963084
-  position 0.07459249864156589 -2.517835735151123 4.766038234231826
+  position 0.08136349017311803 -3.1196762576345956 5.95225067325869
 }
 TexturedBackground {
 }
@@ -261,7 +261,7 @@ Robot {
     density -1
     mass 1
   }
-  controller "intelligent_gps_controller"
+  controller "a_star_gps_controller"
   supervisor TRUE
 }
 Shape {
